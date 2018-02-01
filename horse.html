@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>horse run sprites</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<style>
+		.horse{
+			position: absolute;
+			left: 100px; top: 100px;
+			width: 65px; height: 60px;
+			background: #666;
+			background: url('images/horse.png');
+		}
+	</style>
+</head>
+<body>
+	<div class="horse"></div>
+	
+	<script>
+				
+		$(function(){
+			
+			// horse 스프라이트 객체
+			var sprites = {
+				fname: "horse.png",
+				frame: [
+					{ 
+						width: '63px', 
+						height: '60px',
+						x: '-64px',
+						y: '-60px'
+					},
+					{ 
+						width: '65px', 
+						height: '60px',
+						x: '0px',
+						y: '0px'
+					},
+					{ 
+						width: '64px', 
+						height: '60px',
+						x: '-65px',
+						y: '0px'
+					},	
+					{ 
+						width: '64px', 
+						height: '60px',
+						x: '0px',
+						y: '-60px'
+					}				
+				]
+			};
+			
+			var frame_num = 0;
+						
+			var startAnimation = setInterval(function(){
+				
+				if(frame_num > 3){ frame_num = 0;}				
+				var width = sprites.frame[frame_num].width;
+				var height = sprites.frame[frame_num].height;
+				var x = sprites.frame[frame_num].x;
+				var y = sprites.frame[frame_num].y;			
+								
+				$('.horse').css({
+					width: width,
+					height: height,
+					backgroundPosition: x + " " + y
+				});			
+				frame_num++;
+			}, 1000/5);
+			
+			console.log(sprites.frame[0].width);
+			console.log(sprites.frame[0].height);
+			console.log(sprites.frame[0].x);
+			console.log(sprites.frame[0].y);
+
+			
+			
+		});	// end $()
+	</script>
+</body>
+</html>
